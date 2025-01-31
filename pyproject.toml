@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "smartiq-docs"
+version = "0.1.0"
+description = ""
+authors = ["jay.xu <jay.xu@lenovonetapp.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs-material = "^9.6.1"
+mkdocs = "^1.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
