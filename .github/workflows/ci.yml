@@ -1,10 +1,14 @@
-name: Deploy MkDocs site to GitHub Pages
+name: Deploy SmartIQ Doc to GitHub Pages
 
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -23,12 +27,12 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material
 
-      - name: Build MkDocs site
+      - name: Build SmartIQ Docs
         run: |
           mkdocs build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -36,7 +40,7 @@ jobs:
           path: ./site
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: build
 
