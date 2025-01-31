@@ -1,11 +1,11 @@
 ---
-date: 2024-07-11
+date: 2024-01-31 
 categories:
-  - Documentations
-Tags:
-  - MyDocs
+    - Documentation
+tags:
+    - MkDocs
 ---
 
 # My first blog post!
 
-Today I learned how to deploy documentation site!
+Today I learned how to deploy a documentation site!

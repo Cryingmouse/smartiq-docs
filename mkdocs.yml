@@ -26,10 +26,10 @@ theme:
     - navigation.expand
 #    - toc.integrate
     - navigation.top
-    - navigation.indexes
+    - search.suggest
+    - search.highlight
     - search.share
     - content.code.copy
-#    - content.code.select
 
 plugins:
   - search
@@ -48,10 +48,11 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Code Docs:
-      - Java: coding/my-first-java-file.md
+    - Java: coding/my-first-java-file.md
   - About:
-      - About me: about/about.md
-      - Childhood: about/childhood.md
+    - Current Projects: about/projects.md
+    - About Me: about/about.md
+    - Childhood: about/childhood.md
   - Tags: tags.md
   - Blog:
-      - blog/index.md
+    - blog/index.md

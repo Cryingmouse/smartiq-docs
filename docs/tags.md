@@ -1,5 +1,5 @@
 # Tags
 
-Following is a list of relevant tags:
+My Tags
 
-<!-- material/tags { scope: true } -->
+<!-- material/tags -->
