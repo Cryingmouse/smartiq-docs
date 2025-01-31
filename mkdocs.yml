@@ -1,5 +1,5 @@
 site_name: SmartIQ Docs
-site_url: https://mydomain.org/mysite
+site_url: https://smartiq.lenovonetapp.com/docs
 theme:
   name: material
   palette:
@@ -17,19 +17,21 @@ theme:
         name: Switch to light mode
   features:
     - navigation.instant
+    - navigation.instant.prefetch
     - navigation.instant.progress
-    - navigation.instant.preview
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
-#    - toc.integrate
+    - navigation.path
+    - navigation.indexes
     - navigation.top
     - search.suggest
     - search.highlight
     - search.share
     - content.code.copy
+    - toc.integrate
 
 plugins:
   - search
@@ -37,16 +39,36 @@ plugins:
   - blog
 
 markdown_extensions:
+  - attr_list
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
 
 nav:
   - Home: index.md
+  - User Guide:
+    - LN-Quanta Lib: user_guide/ln_quanta.md
+  - Develop Guide:
+    - Develop Guide: develop_guide/index.md
+    - Markdown: develop_guide/markdown.md
+    - Restful API: develop_guide/restful_guide.md
+  - Domain Model:
+    - DDD Concept: domain_model/concept.md
+    - Network Model: domain_model/network.md
   - Code Docs:
     - Java: coding/my-first-java-file.md
   - About:

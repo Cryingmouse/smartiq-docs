@@ -342,6 +342,21 @@ platformdirs = ">=2.2.0"
 pyyaml = ">=5.1"
 
 [[package]]
+name = "mkdocs-markdownextradata-plugin"
+version = "0.2.6"
+description = "A MkDocs plugin that injects the mkdocs.yml extra variables into the markdown template"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mkdocs_markdownextradata_plugin-0.2.6-py3-none-any.whl", hash = "sha256:34dd40870781784c75809596b2d8d879da783815b075336d541de1f150c94242"},
+    {file = "mkdocs_markdownextradata_plugin-0.2.6.tar.gz", hash = "sha256:4aed9b43b8bec65b02598387426ca4809099ea5f5aa78bf114f3296fd46686b5"},
+]
+
+[package.dependencies]
+mkdocs = "*"
+pyyaml = "*"
+
+[[package]]
 name = "mkdocs-material"
 version = "9.6.1"
 description = "Documentation that simply works"
@@ -753,4 +768,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "5c2304a310e108f899a1fa1f633707f3945f428f560dcf25c4a4330ba888ecfe"
+content-hash = "00b424f728bfa0f0ca49685941a2b881129c8b85d9c38dcbd30a8ece4f7f5c73"

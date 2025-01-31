@@ -1,5 +1,5 @@
 # Tags
 
-My Tags
+SmartIQ Document Tags
 
 <!-- material/tags -->
