@@ -1,13 +1,13 @@
-# LN-Quanta: Hardware/Software Abstraction Library
+# **LN-Quanta: Hardware/Software Abstraction Library**
 
-## Overview
+## **Overview**
 **LN-Quanta** is a self-developed third-party library designed to decouple hardware dependencies and software 
 management logic. It provides standardized interfaces for operations, enabling developers to interact with 
 heterogeneous systems uniformly.
 
 ---
 
-## Core Features
+## **Core Features**
 
 ### 1. **Hardware & System Information Collection**  
 - **Unified Inventory**:  
@@ -39,7 +39,7 @@ heterogeneous systems uniformly.
   - Network management: `set_ip_address(interface, ip)`.
 - **Error Normalization**: Convert OS-specific errors to standard exceptions (e.g., `DeviceNotFoundError`).
 
-## Architecture
+## **Architecture**
 
 | **Layer**     | **Technologies** | **Responsibilities**                                               |
 |---------------|------------------|--------------------------------------------------------------------|
@@ -48,20 +48,20 @@ heterogeneous systems uniformly.
 | **Driver**    | `pluggy plugins` | Platform-specific logic.                                           |
 | **Libray**    | `System APIs`    | Low-level command execution, file I/O, and caching.                |
 
-## Get Started
+## **Get Started**
 
-### Installation:
+### **Installation**:
 
-```bash
+```shell
   pip install ln-quanta
 ```
 
-### Basic Usage:
+### **Basic Usage**:
 
 This tool provides two fundamental usage methods to meet hardware information retrieval needs in different scenarios:
 
 #### 1. Command Line Interface (CLI)
-```bash
+```shell
   storops node get-info
 ```
 
@@ -74,7 +74,7 @@ This tool provides two fundamental usage methods to meet hardware information re
   print(disk_interface.list_block_device())
 ```
 
-### Code Structure Layer
+### **Code Structure Layer**
 ```
 lnquanta/
 ├── command/                # CLI interface directory (click-based command definitions)
