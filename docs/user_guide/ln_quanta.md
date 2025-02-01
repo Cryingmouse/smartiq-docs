@@ -108,3 +108,12 @@ lnquanta/
 │
 └── component_tests/        # Component tests (environment-dependent)
 ```
+
+## **Technical term**
+- **get**:     Query the specified resource information
+- **list**:    List the resource information with the specified resource type
+- **create**:  Create the new resource(s) in the storage cluster
+- **delete**:  Delete the resource(s) in the storage cluster
+- **set**:     Set up the resource(s) configuration in the storage cluster
+- **update**:  Update some attributes of resource(s)
+- **add**:     Add sub resource(s) to the attribute of resource(s).
