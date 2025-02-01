@@ -74,7 +74,7 @@ This tool provides two fundamental usage methods to meet hardware information re
   print(disk_interface.list_block_device())
 ```
 
-### **Code Structure Layer**
+## **Code Structure Layer**
 ```
 lnquanta/
 ├── command/                # CLI interface directory (click-based command definitions)
