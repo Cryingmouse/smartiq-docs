@@ -61,7 +61,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - User Guide:
-    - LN-Quanta Lib: user_guide/ln_quanta.md
+    - LN-Quanta: user_guide/ln_quanta.md
   - Develop Guide:
     - Develop Guide: develop_guide/index.md
     - Python Style: develop_guide/python_style.md
