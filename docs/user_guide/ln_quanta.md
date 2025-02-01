@@ -1,26 +1,110 @@
-# **LN-Quanta**
+# LN-Quanta: Hardware/Software Abstraction Library
 
-## **What is Ln-Quanta**
-It provides the library to ***abstract hardware and software layers*** used by Magnascale™ Software application. It also
-provides some commands to help developers to work with the library.
+## Overview
+**LN-Quanta** is a self-developed third-party library designed to decouple hardware dependencies and software 
+management logic. It provides standardized interfaces for operations, enabling developers to interact with 
+heterogeneous systems uniformly.
 
-## **Project layout**
+---
 
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
-    lnquanta  - - - - - 
-        |__ commandd - - - - - - 命令行接口目�?
-        |__ lib - - - - - - 通用工具封装
-        |  |__ hook.py  - - 插件�?插件装饰�?
-        |
-        |__ driver  - - - - 对南向接口的直接封装:数据面命令行、OS命令、OS配置文件、TFS cpython接口、RGW http接口、TDS 类库接口
-        |  |__ __init__.py  插件化：执行环境加载
-        |  |__ context.py - 插件化：环境变量定义与获�?
-        |
-        |__ interface - - - 北向接口声明和复合接口封�?
-        |  |__ __init__.py  插件化：插件注册
-        |
-        |__ main.py - - - - 命令行入�?
-    mkdocs.yml    # The configuration file.
-    
+## Core Features
+
+### 1. **Hardware & System Information Collection**  
+- **Unified Inventory**:  
+  - **OS & Kernel**: Linux distribution version (e.g., RHEL, Ubuntu, CentOS), kernel release, and architecture (x86_64, ARM).
+  - **Hardware Inventory**:  
+    - **Storage**: Disk models (HDD/SSD/NVMe), RAID controller details (MegaRAID, PERC), filesystem types (ext4, XFS).  
+    - **Network**: NIC vendor/model (Intel X710, Broadcom NetXtreme), driver versions, bond/team configurations, IP addresses, routing tables, etc.  
+    - **Compute**: CPU details (Intel Xeon, AMD EPYC), core topology, DIMM slot population, BIOS/firmware versions.
+
+  - **Multi-Hardware Platform Support**:  
+    - **Enterprise Servers**:
+      - **Lenovo**: ThinkSystem SR650/SR850.
+      - **Custom OEM**: Whitebox servers with SMBIOS/DMI compliance.
+    - **Hypervisor Hosts**:
+      - VMWare ESXi (via ***esxcli*** passthrough on Linux-based management VMs).
+      - KVM/QEMU hosts with PCIe passthrough device detection.
+
+- **Linux-Centric Design**:  
+  - **Native Integration**: Leverages Linux-specific interfaces (`sysfs`, `/proc`, `lsblk`, `lspci`, `dmidecode`) for granular hardware insights.  
+  - **Extended OS Support**: Optional plugins for BSD variants (FreeBSD, OpenBSD) with reduced feature scope.  
+
+### 2. **Configuration File Parsing**
+- **Structured Output**: Parse `/etc/os-release`, `ceph.conf`, and Windows registry keys into JSON/YAML.
+- **Custom Parsers**: Extensible engine for proprietary config formats.
+
+### 3. **System Command Abstraction**
+- **Platform-Agnostic APIs**:
+  - Service control: `start_service(name)`, `stop_service(name)`.
+  - Network management: `set_ip_address(interface, ip)`.
+- **Error Normalization**: Convert OS-specific errors to standard exceptions (e.g., `DeviceNotFoundError`).
+
+## Architecture
+
+| **Layer**     | **Technologies** | **Responsibilities**                                               |
+|---------------|------------------|--------------------------------------------------------------------|
+| **CLI**       | `click`          | User interaction, input validation, and help documentation.        |
+| **Interface** | `pluggy`         | Define abstract contracts (e.g., `get_disks()`, `parse_config()`). |
+| **Driver**    | `pluggy plugins` | Platform-specific logic.                                           |
+| **Libray**    | `System APIs`    | Low-level command execution, file I/O, and caching.                |
+
+## Get Started
+
+### Installation:
+
+```bash
+  pip install ln-quanta
+```
+
+### Basic Usage:
+
+This tool provides two fundamental usage methods to meet hardware information retrieval needs in different scenarios:
+
+#### 1. Command Line Interface (CLI)
+```bash
+  storops node get-info
+```
+
+#### 2. Python Library
+```python
+  from lnquanta.interface.disk import DiskInterface
+  
+  # Get cross-platform hardware info
+  disk_interface = DiskInterface()
+  print(disk_interface.list_block_device())
+```
+
+### Code Structure Layer
+```
+lnquanta/
+├── command/                # CLI interface directory (click-based command definitions)
+│
+├── interface/              # Northbound interface declarations
+│   ├── disk.py             # Disk interface
+│   ├── ntp.py              # NTP interface
+│   └── ...        
+│  
+├── driver/                 # Southbound interface implementations
+│   ├── disk/               
+│   │   └── list_block_device.py       # List block devices
+│   │   └── partition_disk.py          # Partition disks
+│   │   └── ...       
+│   ├── ntp/               
+│   │   └── get_ntp_config.py          # Get NTP configuration
+│   │   └── get_ntp_tracking.py        # Get NTP tracking information
+│   │   └── ...             
+│   └──  ... 
+│
+├── lib/                    # Common utility encapsulations
+│   └── hook.py             # Plugin hooks and decorators
+│   └── parser/
+│       └── dmidecode.py    # DMI decode parser
+│       └── fstab.py        # Fstab file parser
+│       └── ...   
+│
+├── main.py                 # CLI entry point
+│
+├── tests/                  # Unit tests
+│
+└── component_tests/        # Component tests (environment-dependent)
+```
