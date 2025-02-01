@@ -31,7 +31,7 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
-    - toc.integrate
+#    - toc.integrate
 
 plugins:
   - search
@@ -64,6 +64,7 @@ nav:
     - LN-Quanta Lib: user_guide/ln_quanta.md
   - Develop Guide:
     - Develop Guide: develop_guide/index.md
+    - Python Style: develop_guide/python_style.md
     - Markdown: develop_guide/markdown.md
     - Restful API: develop_guide/restful_guide.md
   - Domain Model:
