@@ -1,8 +1,12 @@
-# Python Style Guide
+# **Python Style Guide**
 
-https://google.github.io/styleguide/pyguide.html
+[***Google Python Style Guide***](https://google.github.io/styleguide/pyguide.html)  
 
-## function document example
+[***Google Style Python Docstrings***](https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html)
+
+## **Examples of Google Style Python Docstrings**
+
+### **Function docstring**
 ```python
 def get_cpu_info() -> dict:
     """Get information about the CPU through the command ``lscpu``.
