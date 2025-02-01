@@ -70,8 +70,8 @@ nav:
   - Domain Model:
     - DDD Concept: domain_model/concept.md
     - Network Model: domain_model/network.md
-  - Code Docs:
-    - Java: coding/my-first-java-file.md
+#  - Code Docs:
+#    - Java: coding/my-first-java-file.md
 #  - About:
 #    - Current Projects: about/projects.md
 #    - About Me: about/about.md
