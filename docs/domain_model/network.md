@@ -10,6 +10,7 @@ classDiagram
     - **String** _pci_address_
     - **Bool** _is_rdma_enabled_
     + purchaseParkingPass()
+    + addNetworkDevice()
   }
   
   class DNSRecord {
